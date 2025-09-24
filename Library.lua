@@ -94,18 +94,18 @@ local Library = {
     DPIRegistry = {},
 }
 
-local ObsidianImageManager = {
+local KonstantImageManager = {
     Assets = {
         TransparencyTexture = {
             RobloxId = 139785960036434,
-            Path = "Obsidian/assets/TransparencyTexture.png",
+            Path = "KonstantLib/assets/TransparencyTexture.png",
 
             Id = nil
         },
         
         SaturationMap = {
             RobloxId = 4155801252,
-            Path = "Obsidian/assets/SaturationMap.png",
+            Path = "KonstantLib/assets/SaturationMap.png",
 
             Id = nil
         }
@@ -135,12 +135,12 @@ do
         return TraversedPath
     end
 
-    function ObsidianImageManager.GetAsset(AssetName: string)
-        if not ObsidianImageManager.Assets[AssetName] then
+    function KonstantImageManager.GetAsset(AssetName: string)
+        if not KonstantImageManager.Assets[AssetName] then
             return nil
         end
 
-        local AssetData = ObsidianImageManager.Assets[AssetName]
+        local AssetData = KonstantImageManager.Assets[AssetName]
         if AssetData.Id then
             return AssetData.Id
         end
@@ -159,7 +159,7 @@ do
         return AssetID
     end
 
-    function ObsidianImageManager.DownloadAsset(AssetPath: string)
+    function KonstantImageManager.DownloadAsset(AssetPath: string)
         if not getcustomasset or not writefile or not isfile then
             return
         end
@@ -170,12 +170,12 @@ do
             return
         end
 
-        local URLPath = AssetPath:gsub("Obsidian/", "")
+        local URLPath = AssetPath:gsub("KonstantLib/", "")
         writefile(AssetPath, game:HttpGet(BaseURL .. URLPath))
     end
 
-    for _, Data in ObsidianImageManager.Assets do
-        ObsidianImageManager.DownloadAsset(Data.Path)
+    for _, Data in KonstantImageManager.Assets do
+        KonstantImageManager.DownloadAsset(Data.Path)
     end
 end
 
@@ -1089,7 +1089,7 @@ local function ParentUI(UI: Instance, SkipHiddenUI: boolean?)
 end
 
 local ScreenGui = New("ScreenGui", {
-    Name = "Obsidian",
+    Name = "Konstant",
     DisplayOrder = 999,
     ResetOnSpawn = false,
 })
@@ -1101,7 +1101,7 @@ ScreenGui.DescendantRemoving:Connect(function(Instance)
 end)
 
 local ModalScreenGui = New("ScreenGui", {
-    Name = "ObsidanModal",
+    Name = "KonstantModal",
     DisplayOrder = 999,
     ResetOnSpawn = false,
 })
